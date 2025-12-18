@@ -1,0 +1,20 @@
+---
+name: "Vibrant Realtime Server"
+slug: "vbt-realtime"
+version: "0.0.1"
+description: "Internal service that enables real-time updates to gateway database on mobile app and zone manager."
+startup: services
+init: false
+host_network: true
+arch:
+  - aarch64
+image: harbor-dev.vibrantbt.net/gateway/realtime:0.0.1
+map:
+  - data:rw
+environment:
+  DATABASE_URL: "!secret vbt_database_url"
+  ES_HTTPPORT: "7777"
+ports:
+  "7777/tcp": 7777
+ports_description:
+  "7777/tcp": "Vibrant Realtime HTTP"

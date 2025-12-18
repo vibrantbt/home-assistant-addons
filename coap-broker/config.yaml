@@ -1,0 +1,24 @@
+---
+name: "CoAP Broker"
+description: >
+  Constrained Application Protocol Message Broker by Vibrant Building
+  Technologies
+version: "1.0.4"
+slug: "coap"
+init: false
+image: harbor-dev.vibrantbt.net/gateway/coap-broker:latest
+arch:
+  - aarch64
+host_network: true
+startup: "services"
+boot: "auto"
+map: ["data:rw", "config:rw"]
+environment:
+  NO_DTLS_OK: "true"
+  DB_MODE: "psql"
+options:
+  coap_api_key: "!secret coap_api_key"
+  pg_conninfo: "!secret vbt_db_uri"
+schema:
+  coap_api_key: str
+  pg_conninfo: str

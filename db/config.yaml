@@ -1,0 +1,29 @@
+---
+name: "Vibrant DB"
+slug: "vbt-db"
+version: "0.0.1"
+description: "Vibrant's DB"
+startup: services
+init: false
+host_network: true
+arch:
+  - aarch64
+  - amd64
+  - armv7
+image: harbor-dev.vibrantbt.net/gateway/db:latest
+map:
+  - data:rw
+options:
+  db_name: "appdb"
+  db_user: "appuser"
+  db_password: "!secret vibrant_db_password"
+  port: 5432
+schema:
+  db_name: str
+  db_user: str
+  db_password: str
+  port: int
+ports:
+  "5432/tcp": 5432
+ports_description:
+  "5432/tcp": "Vibrant DB"
