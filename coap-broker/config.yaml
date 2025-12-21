@@ -3,10 +3,10 @@ name: "CoAP Broker"
 description: >
   Constrained Application Protocol Message Broker by Vibrant Building
   Technologies
-version: "1.0.4"
+version: "latest"
 slug: "coap"
 init: false
-image: harbor-dev.vibrantbt.net/gateway/coap-broker:latest
+image: harbor-dev.vibrantbt.net/gateway/coap-broker
 arch:
   - aarch64
 host_network: true

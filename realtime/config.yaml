@@ -1,14 +1,14 @@
 ---
 name: "Vibrant Realtime Server"
 slug: "vbt-realtime"
-version: "0.0.1"
+version: "latest"
 description: "Internal service that enables real-time updates to gateway database on mobile app and zone manager."
 startup: services
 init: false
 host_network: true
 arch:
   - aarch64
-image: harbor-dev.vibrantbt.net/gateway/realtime:0.0.1
+image: harbor-dev.vibrantbt.net/gateway/realtime
 map:
   - data:rw
 environment:

@@ -1,7 +1,7 @@
 ---
 name: "Gateway OS"
 description: "Vibrant Gateway Operating System"
-version: "0.0.1"
+version: "latest"
 slug: "gatewayos"
 init: false
 host_network: true
@@ -9,7 +9,7 @@ homeassistant_api: true
 hassio_api: true
 arch:
   - aarch64
-image: harbor-dev.vibrantbt.net/gateway/gateway-os:latest
+image: harbor-dev.vibrantbt.net/gateway/gateway-os
 ports:
   "8055/tcp": 8055
 ports_description:

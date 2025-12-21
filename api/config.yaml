@@ -1,7 +1,7 @@
 ---
 name: "Vibrant API"
 slug: "vbt-api"
-version: "1.0.0"
+version: "latest"
 description: "Vibrant's API for mobile app usage."
 startup: services
 init: false
@@ -10,7 +10,7 @@ arch:
   - aarch64
   - amd64
   - armv7
-image: harbor-dev.vibrantbt.net/gateway/api:latest
+image: harbor-dev.vibrantbt.net/gateway/api
 map:
   - data:rw
 options:
