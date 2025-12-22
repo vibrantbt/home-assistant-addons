@@ -15,6 +15,7 @@ boot: "auto"
 map: ["data:rw", "config:rw"]
 environment:
   NO_DTLS_OK: "true"
+  COAP_ALLOW_UNKNOWN_DEVICES: "true"
   DB_MODE: "psql"
 options:
   coap_api_key: "!secret coap_api_key"
