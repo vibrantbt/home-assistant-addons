@@ -1,16 +1,79 @@
----
-name: "Gateway OS"
-description: "Vibrant Gateway Operating System"
-version: "latest"
-slug: "gatewayos"
-init: false
-host_network: true
-homeassistant_api: true
-hassio_api: true
+name: Vibrant GatewayOS
+slug: gatewayos
+description: Relay gateway-local telemetry to Vibrant cloud PostgREST, plus a gateway-local Setup API.
+version: "0.2.0"
 arch:
   - aarch64
-image: harbor-dev.vibrantbt.net/gateway/gateway-os
+arch:
+  - aarch64
+image: harbor-dev.vibrantbt.net/gateway/gatewayos
+startup: services
+boot: auto
+
+# Base image uses s6-overlay (/init). Disable Docker's default init (tini),
+# otherwise s6 will not run as PID 1 and the add-on will fail to start.
+init: false
+
+# Allow calling the Supervisor API from inside the add-on (used by the Setup API).
+hassio_api: true
+hassio_role: manager
+
+# Gateway-local Setup API (curl-friendly)
 ports:
-  "8055/tcp": 8055
+  8099/tcp: 8099
 ports_description:
-  "8055/tcp": "Vibrant API HTTP"
+  8099/tcp: "GatewayOS setup/provisioning API"
+
+options:
+  # Setup API
+  setup_token: ""
+
+  # Provisioning
+  repository_url: "https://github.com/vibrantbt/home-assistant-addons.git"
+  registry_url: "harbor-dev.vibrantbt.net"
+  registry_robot_id: ""
+  registry_robot_password: ""
+
+  # Relay config
+  local_db_connection_string: "Host=127.0.0.1;Port=5432;Database=appdb;Username=appuser;Password=changeme"
+  relay_batch_size: 200
+  relay_poll_delay_ms: 1000
+  keycloak_client_id: "postgrest"
+  keycloak_scope: "openid profile email"
+  
+  # Coap Broker (Optional)
+  coap_broker_url: "http://coap:8000"
+  coap_broker_api_key: ""
+
+schema:
+  # Setup API
+  setup_token: password?
+
+  # Provisioning
+  repository_url: str?
+  registry_url: str?
+  registry_robot_id: str?
+  registry_robot_password: password?
+
+  # Identity / cloud relay
+  # NOTE: these are optional so the add-on can start in "setup mode" and be configured via the Setup API.
+  gateway_device_id: str?
+  gateway_serial_number: str?
+  postgrest_base_url: str?
+  keycloak_token_url: str?
+  keycloak_client_id: str?
+  keycloak_client_secret: str?
+  keycloak_scope: str?
+  gateway_username: str?
+  gateway_password: password?
+
+  # Local DB
+  local_db_connection_string: str
+
+  # Relay tuning
+  relay_batch_size: int?
+  relay_poll_delay_ms: int?
+  
+  # Coap Broker
+  coap_broker_url: str?
+  coap_broker_api_key: str?
