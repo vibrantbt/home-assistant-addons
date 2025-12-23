@@ -9,7 +9,7 @@ arch:
 image: harbor-dev.vibrantbt.net/gateway/gatewayos
 startup: services
 boot: auto
-
+host_network: true
 # Base image uses s6-overlay (/init). Disable Docker's default init (tini),
 # otherwise s6 will not run as PID 1 and the add-on will fail to start.
 init: false
