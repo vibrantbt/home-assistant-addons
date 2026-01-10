@@ -11,6 +11,16 @@ arch:
 image: harbor-dev.vibrantbt.net/gateway/realtime
 map:
   - data:rw
+
+# Allow GatewayOS provisioning to configure this add-on via Supervisor options.
+# (Environment variables can still be used as a fallback.)
+options:
+  database_url: ""
+  http_port: 7777
+schema:
+  database_url: str?
+  http_port: int?
+
 environment:
   DATABASE_URL: "!secret vbt_database_url"
   ES_HTTPPORT: "7777"

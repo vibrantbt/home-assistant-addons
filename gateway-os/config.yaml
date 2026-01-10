@@ -18,6 +18,9 @@ init: false
 hassio_api: true
 hassio_role: manager
 
+# Allow calling the Home Assistant Core API via the Supervisor proxy (used by integrations discovery).
+homeassistant_api: true
+
 # Gateway-local Setup API (curl-friendly)
 ports:
   8099/tcp: 8099

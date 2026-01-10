@@ -1,0 +1,42 @@
+---
+name: "Vibrant ZoneManager"
+slug: "zonemanager"
+version: "latest"
+description: "Runs Zone Manager decision logic on the gateway."
+startup: services
+init: false
+host_network: true
+arch:
+  - aarch64
+  - amd64
+  - armv7
+image: harbor-dev.vibrantbt.net/gateway/zonemanager
+map:
+  - data:rw
+
+options:
+  database_connection_string: "Host=127.0.0.1;Port=5432;Database=appdb;Username=appuser;Password=changeme;Ssl Mode=Disable"
+  database_realtime_ws_base_url: "ws://127.0.0.1:7777"
+  coapbroker_uri: "coap://127.0.0.1:5684"
+
+  # Reference Device Strategy Config (optional)
+  ref_device_id: "00000000-0000-0000-0000-000000000000"
+  ref_co2_attr_id: "00000000-0000-0000-0000-000000000000"
+  ref_vent_attr_id: "29daf17a-ce09-4765-b541-5a9642e4188a"
+  ref_co2_threshold: 1000
+  ref_vent_target: 70
+
+schema:
+  database_connection_string: str
+  database_realtime_ws_base_url: str?
+  coapbroker_uri: str?
+  ref_device_id: str?
+  ref_co2_attr_id: str?
+  ref_vent_attr_id: str?
+  ref_co2_threshold: float?
+  ref_vent_target: float?
+
+ports:
+  "80/tcp": 80
+ports_description:
+  "80/tcp": "ZoneManager HTTP"
