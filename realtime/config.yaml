@@ -20,10 +20,6 @@ options:
 schema:
   database_url: str?
   http_port: int?
-
-environment:
-  DATABASE_URL: "!secret vbt_database_url"
-  ES_HTTPPORT: "7777"
 ports:
   "7777/tcp": 7777
 ports_description:
