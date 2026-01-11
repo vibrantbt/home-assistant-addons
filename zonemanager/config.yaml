@@ -1,7 +1,7 @@
 ---
 name: "Vibrant ZoneManager"
 slug: "zonemanager"
-version: "latest"
+version: "20883651358"
 description: "Runs Zone Manager decision logic on the gateway."
 startup: services
 init: false
@@ -40,3 +40,4 @@ ports:
   "80/tcp": 80
 ports_description:
   "80/tcp": "ZoneManager HTTP"
+
