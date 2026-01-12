@@ -1,7 +1,7 @@
 ---
 name: "Vibrant ZoneManager"
 slug: "zonemanager"
-version: "20900345942"
+version: "20905215607"
 description: "Runs Zone Manager decision logic on the gateway."
 startup: services
 init: false
