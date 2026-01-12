@@ -1,7 +1,7 @@
 ---
 name: "Vibrant Realtime Server"
 slug: "vbt-realtime"
-version: "20906487388"
+version: "20899800498"
 description: "Internal service that enables real-time updates to gateway database on mobile app and zone manager."
 startup: services
 init: false
