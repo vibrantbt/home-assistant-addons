@@ -1,9 +1,7 @@
 name: Vibrant GatewayOS
 slug: gatewayos
 description: Relay gateway-local telemetry to Vibrant cloud PostgREST, plus a gateway-local Setup API.
-version: "latest"
-arch:
-  - aarch64
+version: "20934239776"
 arch:
   - aarch64
 image: harbor-dev.vibrantbt.net/gateway/gatewayos
@@ -43,7 +41,7 @@ options:
   relay_poll_delay_ms: 1000
   keycloak_client_id: "postgrest"
   keycloak_scope: "openid profile email"
-  
+
   # Coap Broker (Optional)
   coap_broker_url: "http://coap:8000"
   coap_broker_api_key: ""
@@ -76,7 +74,7 @@ schema:
   # Relay tuning
   relay_batch_size: int?
   relay_poll_delay_ms: int?
-  
+
   # Coap Broker
   coap_broker_url: str?
   coap_broker_api_key: str?
