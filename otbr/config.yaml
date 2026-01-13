@@ -1,0 +1,64 @@
+name: Vibrant OTBR
+slug: otbr
+version: "20967047442"
+description: "Baseline OpenThread Border Router (OTBR) image used by Vibrant GatewayOS."
+startup: services
+arch:
+  - aarch64
+  - amd64
+  - armv7
+image: harbor-dev.vibrantbt.net/gateway/otbr
+init: false
+boot: auto
+host_network: true
+
+# OTBR needs network admin privileges (iptables/ipset) and access to the RCP serial device.
+# Note: `privileged` is a LIST of Linux capabilities in HA add-on config (not a boolean).
+privileged:
+  - NET_ADMIN
+  - NET_RAW
+
+# Convenience: allow serial/USB devices to be mapped in without hardcoding /dev paths.
+uart: true
+usb: true
+
+map:
+  - data:rw
+ports:
+  8081/tcp: 8081
+ports_description:
+  8081/tcp: "OTBR REST API"
+options:
+  # RCP serial device (either a device path like /dev/ttyACM0 or a full radio URL)
+  device: ""
+  # Note: OpenThread's default is 460800; many RCP firmwares use 460800 or 1000000.
+  baudrate: 115200
+  # Hardware flow control is disabled by default in OpenThread. Enable only if your hardware supports it.
+  flow_control: false
+  # USB CDC ACM helper flags (advanced; see OpenThread radio URL parameters)
+  uart_reset: false
+  uart_init_deassert: false
+
+  # OTBR runtime
+  otbr_log_level: "notice"
+  firewall: true
+  nat64: false
+
+  # Optional overrides
+  infra_if: ""
+  thread_if: "wpan0"
+  rest_listen_addr: "0.0.0.0"
+  rest_listen_port: 8081
+schema:
+  device: str?
+  baudrate: int?
+  flow_control: bool?
+  uart_reset: bool?
+  uart_init_deassert: bool?
+  otbr_log_level: str?
+  firewall: bool?
+  nat64: bool?
+  infra_if: str?
+  thread_if: str?
+  rest_listen_addr: str?
+  rest_listen_port: int?
