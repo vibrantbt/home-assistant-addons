@@ -1,7 +1,7 @@
 name: Vibrant GatewayOS
 slug: gatewayos
 description: Relay gateway-local telemetry to Vibrant cloud PostgREST, plus a gateway-local Setup API.
-version: "20934239776"
+version: "20938754165"
 arch:
   - aarch64
 image: harbor-dev.vibrantbt.net/gateway/gatewayos
@@ -46,6 +46,9 @@ options:
   coap_broker_url: "http://coap:8000"
   coap_broker_api_key: ""
 
+  # Logging
+  http_log_level: "Warning"
+
 schema:
   # Setup API
   setup_token: password?
@@ -78,3 +81,6 @@ schema:
   # Coap Broker
   coap_broker_url: str?
   coap_broker_api_key: str?
+
+  # Logging
+  http_log_level: list(Debug|Information|Warning|Error)?
