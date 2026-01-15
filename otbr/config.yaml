@@ -1,6 +1,6 @@
 name: Vibrant OTBR
 slug: otbr
-version: "20967047442"
+version: "21016298942"
 description: "Baseline OpenThread Border Router (OTBR) image used by Vibrant GatewayOS."
 startup: services
 arch:
@@ -41,7 +41,7 @@ options:
 
   # OTBR runtime
   otbr_log_level: "notice"
-  firewall: true
+  firewall: false
   nat64: false
 
   # Optional overrides
