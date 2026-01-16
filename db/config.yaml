@@ -1,7 +1,7 @@
 ---
 name: "Vibrant DB"
 slug: "vbt-db"
-version: "latest"
+version: "21051358063"
 description: "Vibrant's DB"
 startup: services
 init: false
