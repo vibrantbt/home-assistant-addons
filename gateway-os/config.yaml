@@ -1,7 +1,7 @@
 name: Vibrant GatewayOS
 slug: gatewayos
 description: Relay gateway-local telemetry to Vibrant cloud PostgREST, plus a gateway-local Setup API.
-version: "20998131459"
+version: "21143741345"
 arch:
   - aarch64
 image: harbor-dev.vibrantbt.net/gateway/gatewayos
